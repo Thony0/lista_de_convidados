@@ -1,27 +1,25 @@
-var frutaImg=[
-    "https://tse4.mm.bing.net/th?id=OIP.XvZxjh64I6ZNuLHzLVhOIAHaFc&pid=Api&P=0", 
-    "https://tse2.mm.bing.net/th?id=OIP.TdPB1CIxHwPV3mMLcKdxxQHaEe&pid=Api&P=0", 
-    "https://tse3.mm.bing.net/th?id=OIP.IpIxta5nwKl31Rk40ifEWQHaEK&pid=Api&P=0", 
-    "https://tse4.mm.bing.net/th?id=OIP.qLrQT8h-AiIwvbG-mACYsgHaFe&pid=Api&P=0", 
-    "https://tse2.explicit.bing.net/th?id=OIP.8NeRWtWEW8NNUB_M_pARUgHaFj&pid=Api&P=0", 
-    ];
-    var frutasNomes=[
-    "frutas", "maçã", "banana", "manga", "mamão", 
-    ];
-var i=0;
-function update()
-{
-    i++;
-    var numerosDasFrutasNoArray=4;
-    if(i > numerosDasFrutasNoArray )
-{
-    i=0;
+var listaDeConvidados=[];
+function enviar(){
+    var nome=document.getElementById("nome").value;
+ listaDeConvidados.push(nome);
+ document.getElementById("mostrarNome").innerHTML=listaDeConvidados;
 }
-
-var atualizarImagem=frutaImg[i];
-var atualizarNome=frutasNomes[i];
-document.getElementById("frutasImagem").src=atualizarImagem;
-document.getElementById("frutasNome").innerHTML=atualizarNome;
-
+function mostrar(){
+    var nomes=listaDeConvidados.join("<br>");
+    document.getElementById("mostrar-lista").innerHTML=nomes;
 }
-
+function organizar_lista(){
+    listaDeConvidados.sort();
+    var nomes=listaDeConvidados.join("<br>");
+    document.getElementById("organizador").innerHTML=nomes;
+}
+function pesquisar(){
+    var nomePesquisado=document.getElementById("nomePesquisado").value;
+    var encontrado=0;
+    for (var indice = 0; indice < listaDeConvidados.length; indice++) {
+        if (nomePesquisado == listaDeConvidados[indice]) {
+             encontrado = encontrado + 1;
+        }
+ document.getElementById("pesquisado").innerHTML = "Nome encontrado " + encontrado + " vez(es)";
+ }
+}
